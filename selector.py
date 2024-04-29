@@ -1,10 +1,11 @@
 import os
 from tkinter import Tk, Button, Label, Frame, messagebox
 from PIL import Image, ImageTk
+import shutil
 
 # Paths
-source_dir = '/home/anqiao/Pictures/singapore'
-target_dir = '/home/anqiao/Pictures/singapore_s'
+source_dir = '/home/anqiao/Pictures/solothurn_s'
+target_dir = '/home/anqiao/Pictures/solothurn_best'
 
 # Function to extract the numerical part from the filename
 def extract_number(filename):
@@ -31,7 +32,9 @@ def save_image():
     if current_image_index < len(images):
         source_path = os.path.join(source_dir, images[current_image_index])
         target_path = os.path.join(target_dir, images[current_image_index])
-        os.rename(source_path, target_path)
+        # os.rename(source_path, target_path)
+        shutil.copy2(source_path, target_path)
+
     move_to_next_image()
 
 # Function to skip to the next image
